@@ -1,36 +1,36 @@
 nc: 6
 
 backbone:
-  - [-1, 1, Conv, [64, 3, 2]]                    # 0  (s2)
-  - [-1, 1, Conv, [64, 3, 2]]                    # 1  (s4)
-  - [-1, 2, ConvNeXtBlockLite, []]               # 2  -> C2
+  - [-1, 1, Conv, [64, 3, 2]]                    
+  - [-1, 1, Conv, [64, 3, 2]]                    
+  - [-1, 2, ConvNeXtBlockLite, []]             
 
-  - [-1, 1, Conv, [128, 3, 2]]                   # 3  (s8)
-  - [-1, 2, ConvNeXtBlockLite, []]               # 4  -> C3
+  - [-1, 1, Conv, [128, 3, 2]]                
+  - [-1, 2, ConvNeXtBlockLite, []]            
 
-  - [-1, 1, Conv, [256, 3, 2]]                   # 5  (s16)
-  - [-1, 4, ConvNeXtBlockLite, []]               # 6  -> C4
+  - [-1, 1, Conv, [256, 3, 2]]                  
+  - [-1, 4, ConvNeXtBlockLite, []]             
 
-  - [-1, 1, Conv, [512, 3, 2]]                   # 7  (s32)
-  - [-1, 2, ConvNeXtBlockLite, []]               # 8  -> C5
+  - [-1, 1, Conv, [512, 3, 2]]                  
+  - [-1, 2, ConvNeXtBlockLite, []]            
 
 head:
-  - [8, 1, Conv, [256, 1, 1]]                    # 9
-  - [-1, 1, nn.Upsample, [None, 2, nearest]]     # 10
-  - [[-1, 6], 1, Concat, [1]]                    # 11
-  - [-1, 2, C2f, [256]]                          # 12
+  - [8, 1, Conv, [256, 1, 1]]                    
+  - [-1, 1, nn.Upsample, [None, 2, nearest]]   
+  - [[-1, 6], 1, Concat, [1]]                
+  - [-1, 2, C2f, [256]]                       
 
-  - [-1, 1, Conv, [128, 1, 1]]                   # 13
-  - [-1, 1, nn.Upsample, [None, 2, nearest]]     # 14
-  - [[-1, 4], 1, Concat, [1]]                    # 15
-  - [-1, 2, C2f, [128]]                          # 16
+  - [-1, 1, Conv, [128, 1, 1]]                 
+  - [-1, 1, nn.Upsample, [None, 2, nearest]]   
+  - [[-1, 4], 1, Concat, [1]]                  
+  - [-1, 2, C2f, [128]]                       
 
-  - [-1, 1, Conv, [128, 3, 2]]                   # 17
-  - [[-1, 12], 1, Concat, [1]]                   # 18
-  - [-1, 2, C2f, [256]]                          # 19
+  - [-1, 1, Conv, [128, 3, 2]]             
+  - [[-1, 12], 1, Concat, [1]]          
+  - [-1, 2, C2f, [256]]                   
 
-  - [-1, 1, Conv, [256, 3, 2]]                   # 20
-  - [[-1, 9], 1, Concat, [1]]                    # 21
-  - [-1, 2, C2f, [256]]                          # 22
+  - [-1, 1, Conv, [256, 3, 2]]           
+  - [[-1, 9], 1, Concat, [1]]             
+  - [-1, 2, C2f, [256]]             
 
   - [[16, 19, 22], 1, Detect, [nc]]
