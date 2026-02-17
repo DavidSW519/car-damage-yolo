@@ -1,25 +1,25 @@
 nc: 6
 
 backbone:
-  - [-1, 1, Conv, [16, 3, 2]]                
-  - [-1, 2, MBV3BlockLite, []]               
+  - [-1, 1, Conv, [16, 3, 2]]
+  - [-1, 2, MBV3BlockLite, [16]]
 
-  - [-1, 1, Conv, [24, 3, 2]]         
-  - [-1, 2, MBV3BlockLite, []]         
+  - [-1, 1, Conv, [24, 3, 2]]
+  - [-1, 2, MBV3BlockLite, [24]]
 
-  - [-1, 1, Conv, [40, 3, 2]]        
-  - [-1, 2, MBV3BlockLite, []]     
+  - [-1, 1, Conv, [40, 3, 2]]
+  - [-1, 2, MBV3BlockLite, [40]]
 
-  - [-1, 1, Conv, [80, 3, 2]]    
-  - [-1, 2, MBV3BlockLite, []]
+  - [-1, 1, Conv, [80, 3, 2]]
+  - [-1, 2, MBV3BlockLite, [80]]
 
-  - [-1, 1, Conv, [112, 3, 2]]  
-  - [-1, 2, MBV3BlockLite, []]     
+  - [-1, 1, Conv, [112, 3, 2]]
+  - [-1, 2, MBV3BlockLite, [112]]
 
 head:
-  - [9, 1, Conv, [192, 1, 1]] 
-  - [-1, 1, nn.Upsample, [None, 2, nearest]]  
-  - [[-1, 7], 1, Concat, [1]] 
+  - [9, 1, Conv, [192, 1, 1]]
+  - [-1, 1, nn.Upsample, [None, 2, nearest]]
+  - [[-1, 7], 1, Concat, [1]]
   - [-1, 2, C2f, [192]]
 
   - [-1, 1, Conv, [96, 1, 1]]
@@ -28,12 +28,11 @@ head:
   - [-1, 2, C2f, [96]]
 
   - [-1, 1, Conv, [96, 3, 2]]
-  - [[-1, 13], 1, Concat, [1]]  
+  - [[-1, 13], 1, Concat, [1]]
   - [-1, 2, C2f, [192]]
 
-  - [-1, 1, Conv, [192, 3, 2]]                   
-  - [[-1, 10], 1, Concat, [1]]                  
+  - [-1, 1, Conv, [192, 3, 2]]
+  - [[-1, 10], 1, Concat, [1]]
   - [-1, 2, C2f, [192]]
 
   - [[17, 20, 23], 1, Detect, [nc]]
-
