@@ -2,10 +2,10 @@ nc: 6
 
 backbone:
   - [-1, 1, Conv, [16, 3, 2]]                
-  - [-1, 1, MBV3BlockLite, []]               
+  - [-1, 2, MBV3BlockLite, []]               
 
   - [-1, 1, Conv, [24, 3, 2]]         
-  - [-1, 1, MBV3BlockLite, []]         
+  - [-1, 2, MBV3BlockLite, []]         
 
   - [-1, 1, Conv, [40, 3, 2]]        
   - [-1, 2, MBV3BlockLite, []]     
@@ -14,7 +14,7 @@ backbone:
   - [-1, 2, MBV3BlockLite, []]
 
   - [-1, 1, Conv, [112, 3, 2]]  
-  - [-1, 1, MBV3BlockLite, []]     
+  - [-1, 2, MBV3BlockLite, []]     
 
 head:
   - [9, 1, Conv, [192, 1, 1]] 
@@ -36,3 +36,4 @@ head:
   - [-1, 2, C2f, [192]]
 
   - [[17, 20, 23], 1, Detect, [nc]]
+
