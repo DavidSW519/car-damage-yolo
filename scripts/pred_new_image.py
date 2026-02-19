@@ -2,7 +2,7 @@ import sys
 from ultralytics import YOLO
 import scripts.register_cardd_blocks 
 
-weights = "/content/car-damage-yolo/runs/detect/runs/cardd_backbone_compare_fast/A_resnetlike_lite_150epochs/weights/best.pt"
+weights = "/content/car-damage-yolo/runs/A_resnetlike_lite_150epochs/weights/best.pt"
 
 img_path = "data/miata.jpg"
 model = YOLO(weights)
