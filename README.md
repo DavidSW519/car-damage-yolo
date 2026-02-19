@@ -19,6 +19,7 @@ All models are trained and evaluated under identical experimental conditions to 
 
 ## 📂 Project Structure
 
+```
 car-damage-yolo/
 │
 ├── models/                  # Custom backbones and model definitions
@@ -26,12 +27,12 @@ car-damage-yolo/
 ├── scripts/
 │   ├── train.py             # Main training script
 │   ├── download_dataset.py  # Dataset download script
-│   ├── pred_new_image.py    # Inference scripts for new images
+│   ├── pred_new_image.py    # Inference script for new images
 │
 ├── data/                    # Dataset directory
 │
 └── runs/                    # Training results and logs
-
+```
 ---
 
 ## Run
