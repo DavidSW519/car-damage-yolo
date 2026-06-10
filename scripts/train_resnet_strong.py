@@ -1,5 +1,5 @@
 from ultralytics import YOLO
-import register_cardd_blocks
+import scripts.register_cardd_blocks
 
 
 DATA = "configs/data_cardd.yaml"
